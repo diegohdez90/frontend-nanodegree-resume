@@ -15,13 +15,14 @@ replace the %data% placeholder text you see in them.
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
 var HTMLheaderRole = '<span>%data%</span><hr/>';
 
-var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
-var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
+var HTMLcontactGeneric = '<li class="flex-item"><span class="light-blue-50-text">%contact%</span><span class="white-text">%data%</span></li>';
+var HTMLmobile = '<li class="flex-item"><span class="light-blue-50-text">mobile</span><span class="white-text">%data%</span></li>';
+var HTMLemail = '<li class="flex-item"><span class="light-blue-50-text">email</span><span class="white-text"><a href="mailto:%data%">%data%</a></span></li>';
+var HTMLtwitter = '<li class="flex-item"><span class="light-blue-50-text">twitter</span><span class="white-text"><a href="https://twitter.com/%data%" target="_blank">%data%</a></span></li>';
+var HTMLgithub = '<li class="flex-item"><span class="light-blue-50-text">github</span><span class="white-text"><a href="https://github.com/%data%" target="_blank">%data%</span></li>';
+var HTMLlinkedin = '<li class="flex-item"><span class="light-blue-50-text">Linkedin</span><span class="white-text"><a href="https://mx.linkedin.com/in/%data%" target="_blank">%data%</a></span></li>';
+var HTMLblog = '<li class="flex-item"><span class="light-blue-50-text">blog</span><span class="white-text">%data%</span></li>';
+var HTMLlocation = '<li class="flex-item"><span class="light-blue-50-text">location</span><span class="white-text">%data%</span></li>';
 
 var HTMLbioPic = '<img src="%data%" class="biopic">';
 var HTMLWelcomeMsg = '<span class="welcome-message">%data%</span>';
@@ -138,7 +139,7 @@ function initializeMap() {
     for (var job in work.jobs) {
       locations.push(work.jobs[job].location);
     }
-
+    
     return locations;
   }
 
@@ -172,6 +173,7 @@ function initializeMap() {
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
+      infoWindow.open(map,marker);
     });
 
     // this is where the pin actually gets added to the map.
@@ -234,11 +236,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});
